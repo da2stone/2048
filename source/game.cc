@@ -1,7 +1,8 @@
-/*********************************
+/******************************************
  * game.cc
+ * This is where the game logic is produced
  * DANIEL STONE 2016
- *********************************/
+ ******************************************/
  #include "game.h"
  #include "display.h"
  #include <stdlib.h>
@@ -41,12 +42,18 @@ Game::~Game() {
     board->displayBoard();
  }
 
+// Sets a random piece in any open spot on the board
  void Game::setPiece() {
-    int row, col;
+    int row, col, count = 0;
     srand (time(NULL));
     do {
-        row = rand() % 3 + 0;
-        col = rand() % 3 + 0;
+        row = rand() % 4 + 0;
+        col = rand() % 4 + 0;
+        count++;
+        if (count >= 15) {
+            cout << "Sorry you lose" << endl;
+            break;
+        }
     } while (theGrid[row][col] != 0);
 
     int state = rand() % 2 + 0;
@@ -61,112 +68,147 @@ Game::~Game() {
         state = 8;
     }
     theGrid[row][col] = state;
+    count = 0;
  }
+
+// Move operators
 
  void Game::moveLeft() {
     for (int row = 0; row < 4; row++) {
         int swapCount = 0;
         while (theGrid[row][swapCount] != 0) {
             swapCount++;
-            if (swapCount == 4) {
+            if (swapCount == 3) {
                 break;
             }
         }
-        if (swapCount == 4) {
+        if (swapCount == 3) {
             continue;
         }
         else {
-            while (swapCount < 3) {
-                int temp = theGrid[row][swapCount + 1];
-                if (temp == theGrid[row][swapCount]) {
-                    temp *= 2;
+            int index = swapCount + 1;
+            while (theGrid[row][index] == 0) {
+                index++;
+                if (index == 4) {
+                    break;
                 }
-                theGrid[row][swapCount] = temp;
+            }
+            while (index < 4) {
+                if (theGrid[row][index] == 0) {
+                    index++;
+                    continue;
+                }
+                int temp = theGrid[row][swapCount];
+                theGrid[row][swapCount] = theGrid[row][index];
+                theGrid[row][index] = temp;
+                index++;
                 swapCount++;
             }
-            theGrid[row][swapCount] = 0;
         }
-    }
-    
+    }  
  }
 
  void Game::moveRight() {
-for (int row = 0; row < 4; row++) {
+    for (int row = 0; row < 4; row++) {
         int swapCount = 3;
         while (theGrid[row][swapCount] != 0) {
             swapCount--;
-            if (swapCount == -1) {
+            if (swapCount == 0) {
                 break;
             }
         }
-        if (swapCount == -1) {
+        if (swapCount == 0) {
             continue;
         }
         else {
-            while (swapCount > 0) {
-                int temp = theGrid[row][swapCount - 1];
-                if (temp == theGrid[row][swapCount]) {
-                    temp *= 2;
+            int index = swapCount - 1;
+            while (theGrid[row][index] == 0) {
+                index--;
+                if (index == -1) {
+                    break;
                 }
-                theGrid[row][swapCount] = temp;
-                swapCount++;
             }
-            theGrid[row][swapCount] = 0;
+            while (index >= 0) {
+                if (theGrid[row][index] == 0) {
+                    index--;
+                    continue;
+                }
+                int temp = theGrid[row][swapCount];
+                theGrid[row][swapCount] = theGrid[row][index];
+                theGrid[row][index] = temp;
+                index--;
+                swapCount--;
+            }
         }
-    } 
-    
+    }  
 }
 
  void Game::moveUp() {
-for (int col = 0; col < 4; col++) {
+    for (int col = 0; col < 4; col++) {
         int swapCount = 0;
         while (theGrid[swapCount][col] != 0) {
             swapCount++;
-            if (swapCount == 4) {
+            if (swapCount == 3) {
                 break;
             }
         }
-        if (swapCount == 4) {
+        if (swapCount == 3) {
             continue;
         }
         else {
-            while (swapCount < 3) {
-                int temp = theGrid[swapCount + 1][col];
-                if (temp == theGrid[swapCount][col]) {
-                    temp *= 2;
+            int index = swapCount + 1;
+            while (theGrid[index][col] == 0) {
+                index++;
+                if (index == 4) {
+                    break;
                 }
-                theGrid[swapCount][col] = temp;
+            }
+            while (index < 4) {
+                if (theGrid[index][col] == 0) {
+                    index++;
+                    continue;
+                }
+                int temp = theGrid[swapCount][col];
+                theGrid[swapCount][col] = theGrid[index][col];
+                theGrid[index][col] = temp;
+                index++;
                 swapCount++;
             }
-            theGrid[swapCount][col] = 0;
         }
     }
-    
  }
 
  void Game::moveDown() {
-for (int col = 0; col < 4; col++) {
+    for (int col = 0; col < 4; col++) {
         int swapCount = 3;
         while (theGrid[swapCount][col] != 0) {
             swapCount--;
-            if (swapCount == -1) {
+            if (swapCount == 0) {
                 break;
             }
         }
-        if (swapCount == -1) {
+        if (swapCount == 0) {
             continue;
         }
         else {
-            while (swapCount > 0) {
-                int temp = theGrid[swapCount - 1][col];
-                if (temp == theGrid[swapCount][col]) {
-                    temp *= 2;
+            int index = swapCount - 1;
+            while (theGrid[index][col] == 0) {
+                index--;
+                if (index == -1) {
+                    break;
                 }
-                theGrid[swapCount][col] = temp;
-                swapCount++;
             }
-            theGrid[swapCount][col] = 0;
-        }
-    } 
-    
+            while (index >= 0) {
+                if (theGrid[index][col] == 0) {
+                    index--;
+                    continue;
+                }
+                int temp = theGrid[swapCount][col];
+                theGrid[swapCount][col] = theGrid[index][col];
+                theGrid[index][col] = temp;
+                index--;
+                swapCount--;
+            }
+        } 
+    }
  }

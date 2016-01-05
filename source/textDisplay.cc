@@ -18,8 +18,8 @@ TextDisplay::TextDisplay(Game *g) : Display(g) {}
 *******************/
 
 void TextDisplay::displayBoard() {
-    for (int row = 0; row < 3; row++) {
-        for (int col = 0; col < 3; col++) {
+    for (int row = 0; row < 4; row++) {
+        for (int col = 0; col < 4; col++) {
             cout << game->theGrid[row][col] << " ";
         }
         cout << endl;

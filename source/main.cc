@@ -11,6 +11,6 @@ using namespace std;
 
  int main() {
     Controller c;
-    cout << "hello world" << endl;
+    cout << "Welcome to 2048" << endl;
     c.play();
  }
