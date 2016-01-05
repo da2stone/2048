@@ -87,12 +87,6 @@ Game::~Game() {
         }
         else {
             int index = swapCount + 1;
-            while (theGrid[row][index] == 0) {
-                index++;
-                if (index == 4) {
-                    break;
-                }
-            }
             while (index < 4) {
                 if (theGrid[row][index] == 0) {
                     index++;
@@ -122,12 +116,6 @@ Game::~Game() {
         }
         else {
             int index = swapCount - 1;
-            while (theGrid[row][index] == 0) {
-                index--;
-                if (index == -1) {
-                    break;
-                }
-            }
             while (index >= 0) {
                 if (theGrid[row][index] == 0) {
                     index--;
@@ -157,12 +145,6 @@ Game::~Game() {
         }
         else {
             int index = swapCount + 1;
-            while (theGrid[index][col] == 0) {
-                index++;
-                if (index == 4) {
-                    break;
-                }
-            }
             while (index < 4) {
                 if (theGrid[index][col] == 0) {
                     index++;
@@ -192,12 +174,6 @@ Game::~Game() {
         }
         else {
             int index = swapCount - 1;
-            while (theGrid[index][col] == 0) {
-                index--;
-                if (index == -1) {
-                    break;
-                }
-            }
             while (index >= 0) {
                 if (theGrid[index][col] == 0) {
                     index--;
