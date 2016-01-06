@@ -95,6 +95,14 @@ Game::~Game() {
                 int temp = theGrid[row][swapCount];
                 theGrid[row][swapCount] = theGrid[row][index];
                 theGrid[row][index] = temp;
+                if (swapCount > 0) {
+                    if (theGrid[row][swapCount - 1] == theGrid[row][swapCount]) {
+                        theGrid[row][swapCount - 1] *= 2;
+                        theGrid[row][swapCount] = 0;
+                        index = swapCount + 1;
+                        continue;
+                    }
+                }
                 index++;
                 swapCount++;
             }
