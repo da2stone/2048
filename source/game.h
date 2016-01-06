@@ -19,7 +19,10 @@ class Game {
         void moveUp();
         void moveDown();
         void setPiece();
+        void manPiece(int r, int c, int state);
         int **theGrid;
+    private:
+        bool noMerge;
 };
 
 #endif

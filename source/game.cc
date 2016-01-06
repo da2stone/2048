@@ -24,6 +24,7 @@ Game::Game() {
         }
     }
     board = new TextDisplay(this);
+    noMerge = false;
 }
 
 Game::~Game() {
@@ -43,9 +44,13 @@ Game::~Game() {
  }
 
 // Sets a random piece in any open spot on the board
+void Game::manPiece(int r, int c, int state) {
+    theGrid[r][c] = state;
+}
+
  void Game::setPiece() {
     int row, col, count = 0;
-    srand (time(NULL));
+    /*srand (time(NULL));
     do {
         row = rand() % 4 + 0;
         col = rand() % 4 + 0;
@@ -55,9 +60,9 @@ Game::~Game() {
             break;
         }
     } while (theGrid[row][col] != 0);
-
-    int state = rand() % 2 + 0;
-
+*/
+   // int state = rand() % 2 + 0;
+int state = 0;
     if (state == 0) {
         state = 2;
     }
@@ -67,7 +72,8 @@ Game::~Game() {
     else {
         state = 8;
     }
-    theGrid[row][col] = state;
+//    cout << "Adding " << state << " to [" << row << "," << col << "]" << endl;
+    theGrid[0][3] = state;
     count = 0;
  }
 
@@ -81,32 +87,56 @@ Game::~Game() {
             if (swapCount == 3) {
                 break;
             }
-        }
-        if (swapCount == 3) {
-            continue;
-        }
-        else {
-            int index = swapCount + 1;
-            while (index < 4) {
-                if (theGrid[row][index] == 0) {
-                    index++;
-                    continue;
-                }
-                int temp = theGrid[row][swapCount];
-                theGrid[row][swapCount] = theGrid[row][index];
-                theGrid[row][index] = temp;
-                if (swapCount > 0) {
-                    if (theGrid[row][swapCount - 1] == theGrid[row][swapCount]) {
-                        theGrid[row][swapCount - 1] *= 2;
-                        theGrid[row][swapCount] = 0;
-                        index = swapCount + 1;
+        }// End while
+
+        if (swapCount > 1) { // Checking for duplicates side by side
+            bool first = false;
+            int temp, count = 0;;
+            for (int i = 0; i < swapCount; i++) {
+                if (theGrid[row][i] == theGrid[row][i + 1]) {
+                    count++;
+                    theGrid[row][i] *=2;
+                    theGrid[row][i+1] = 0;
+                    cout << "[" << row << "," << i << "] = " << theGrid[row][i] << endl;
+                    if (first) {
                         continue;
                     }
+                    else {
+                        first = true;
+                        temp = i + 1;
+                    }
                 }
-                index++;
-                swapCount++;
+            }
+            if (count == 2) {
+                noMerge = true;
+            }
+            if (first) {
+                swapCount = temp;
             }
         }
+
+        int index = swapCount + 1;
+
+        while (index < 4) {
+            if (theGrid[row][index] == 0) {
+                index++;
+                continue;
+            }
+            int temp = theGrid[row][swapCount];
+            theGrid[row][swapCount] = theGrid[row][index];
+            theGrid[row][index] = temp;
+            if (swapCount > 0) {
+                if (theGrid[row][swapCount - 1] == theGrid[row][swapCount] && !noMerge) {
+                    theGrid[row][swapCount - 1] *= 2;
+                    theGrid[row][swapCount] = 0;
+                    index = swapCount + 1;
+                    continue;
+                }
+            }
+            index++;
+            swapCount++;
+        } //End while (index < 4)
+        noMerge = false;
     }  
  }
 
