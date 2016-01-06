@@ -22,9 +22,9 @@ Controller::~Controller() {}
     bool addNumber = true;
     Game *g = new Game();
     while(!isWon) {  
-        //if (addNumber) {
-        //    g->setPiece();
-        //}
+        if (addNumber) {
+            g->setPiece();
+        }
         g->notifyBoard();
 
         cout << "Which direction would you like to go <Left, Right, Up, Down>" << endl;
