@@ -105,7 +105,7 @@ void Game::setPiece() {
                     }
                 }
             }
-            if (count == 2) {
+            if (count >= 2) {
                 noMerge = true;
             }
             if (first) {
