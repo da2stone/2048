@@ -23,7 +23,7 @@ Game::Game() {
             theGrid[i][j] = 0;
         }
     }
-    board = new TextDisplay(this);
+    board = new GraphicDisplay(this);
     noMerge = false;
 }
 
