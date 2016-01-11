@@ -5,14 +5,16 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "display.h"
+#include "boardDisplay.h"
 #include "textDisplay.h"
+#include "graphicDisplay.h"
 
 class Game {
     public:
         Game();
         ~Game();
-        Display *board;
+        BoardDisplay *board;
+        BoardDisplay *board2;
         void notifyBoard();
         void moveLeft();
         void moveRight();

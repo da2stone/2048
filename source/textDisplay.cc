@@ -12,7 +12,7 @@ using namespace std;
  Constructor/Destructor
 ************************/
 
-TextDisplay::TextDisplay(Game *g) : Display(g) {}
+TextDisplay::TextDisplay(Game *g) : BoardDisplay(g) {}
 
 /******************
  Public Methods

@@ -2,10 +2,10 @@
  * display.cc
  * DANIEL STONE 2016
  ****************************/
- #include "display.h"
+ #include "boardDisplay.h"
  
 /*************************
  Constructor/Destructor
 ************************/
-Display::Display(Game *g) : game(g) {}
-Display::~Display() {} 
+BoardDisplay::BoardDisplay(Game *g) : game(g) {}
+BoardDisplay::~BoardDisplay() {} 

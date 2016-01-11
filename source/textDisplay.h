@@ -5,9 +5,9 @@
 #ifndef TEXTDISPLAY_H
 #define TEXTDISPLAY_H
 
-#include "display.h"
+#include "boardDisplay.h"
 
-class TextDisplay : public Display {
+class TextDisplay : public BoardDisplay {
     public: 
         TextDisplay(Game *g);
         void displayBoard();

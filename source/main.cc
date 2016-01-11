@@ -4,8 +4,9 @@
  **********************/
 #include "game.h"
 #include "controller.h"
-#include "display.h"
+#include "boardDisplay.h"
 #include "textDisplay.h"
+#include "graphicDisplay.h"
 #include <iostream>
 using namespace std;
 

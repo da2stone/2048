@@ -7,10 +7,10 @@
 
 class Game;
 
-class Display {
+class BoardDisplay {
     public:
-        Display(Game *game);
-        virtual ~Display() = 0;
+        BoardDisplay(Game *game);
+        virtual ~BoardDisplay() = 0;
 
         Game *game;
         virtual void displayBoard() = 0;

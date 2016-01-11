@@ -6,14 +6,15 @@
 #ifndef GRAPHICDISPLAY_H
 #define GRAPHICDISPLAY_H
 
+#include "boardDisplay.h"
 #include "window.h"
-#include "display.h"
 
-class GraphicDisplay : public Display {
-    XWindow *xw;
+class GraphicDisplay : public BoardDisplay {
+    Xwindow *xw;
     
     public:
         GraphicDisplay(Game *g);
+        ~GraphicDisplay();
         void displayBoard();
 };
 

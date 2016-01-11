@@ -4,7 +4,7 @@
  * DANIEL STONE 2016
  ******************************************/
  #include "game.h"
- #include "display.h"
+ #include "boardDisplay.h"
  #include <stdlib.h>
  #include <time.h>
  #include <iostream>
@@ -24,6 +24,7 @@ Game::Game() {
         }
     }
     board = new GraphicDisplay(this);
+    board2 = new TextDisplay(this);
     noMerge = false;
 }
 
@@ -33,6 +34,7 @@ Game::~Game() {
     }
     delete [] theGrid;
     delete board;
+    delete board2;
 }
 
 /***************
@@ -41,6 +43,7 @@ Game::~Game() {
 
  void Game::notifyBoard() {
     board->displayBoard();
+    board2->displayBoard();
  }
 
 // Sets a random piece in any open spot on the board
