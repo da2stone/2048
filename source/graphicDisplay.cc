@@ -35,36 +35,48 @@ using namespace std;
 break;
  				case 2:
  					xw->fillRectangle(row*50+50, col*50+50, 50, 50, 2);
+xw->drawString(row*50+75, col*50+75, "2", 0);
 break; 
 				case 4:
  				    xw->fillRectangle(row*50+50, col*50+50, 50, 50, 2);
+xw->drawString(row*50+75, col*50+75, "4", 0);
 break; 
 				case 8:
  					xw->fillRectangle(row*50+50, col*50+50, 50, 50, 8);
+xw->drawString(row*50+75, col*50+75, "8", 0);
 break; 
 				case 16:
  				    xw->fillRectangle(row*50+50, col*50+50, 50, 50, 8);
+xw->drawString(row*50+75, col*50+75, "16", 0);
 break; 
 				case 32:
  					xw->fillRectangle(row*50+50, col*50+50, 50, 50, 6);
+xw->drawString(row*50+75, col*50+75, "32", 0);
 break; 
 				case 64:
  					xw->fillRectangle(row*50+50, col*50+50, 50, 50, 6);
+xw->drawString(row*50+75, col*50+75, "64", 0);
 break; 
 				case 128:
  					xw->fillRectangle(row*50+50, col*50+50, 50, 50, 5);
+xw->drawString(row*50+75, col*50+75, "128", 0);
 break; 
 				case 256:
  					xw->fillRectangle(row*50+50, col*50+50, 50, 50, 5);
+xw->drawString(row*50+75, col*50+75, "256", 0);
 break; 
 				case 512:
  					xw->fillRectangle(row*50+50, col*50+50, 50, 50, 4);
+xw->drawString(row*50+75, col*50+75, "512", 0);
 break; 
 				case 1024:
  					xw->fillRectangle(row*50+50, col*50+50, 50, 50, 4);
+xw->drawString(row*50+75, col*50+75, "1024", 0);
 break; 
 				case 2048:
  					xw->fillRectangle(row*50+50, col*50+50, 50, 50, 3);
+xw->drawString(row*50+75, col*50+75, "2048", 0);
+break;
  				default:
  					xw->fillRectangle(row*50+50, col*50+50, 50, 50, 1);
  					break;
