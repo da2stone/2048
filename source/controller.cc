@@ -22,7 +22,7 @@ Controller::~Controller() {}
     bool addNumber = true;
     Game *g = new Game();
     while(!isWon) { 
-        if (g->getIsWon) {
+        if (g->getIsWon()) {
             isWon = true;
             break;
         } 

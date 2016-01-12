@@ -22,6 +22,7 @@ class Game {
         void moveDown();
         void setPiece();
         void manPiece(int r, int c, int state);
+        bool getIsWon();
         int **theGrid;
     private:
         bool noMerge;

@@ -79,7 +79,7 @@ void Game::setPiece() {
     count = 0;
 }
 
-void Game::getIsWon() {
+bool Game::getIsWon() {
     return isWon;
 }
 
@@ -106,7 +106,6 @@ void Game::getIsWon() {
                         isWon = true;
                     }
                     theGrid[row][i+1] = 0;
-                    cout << "[" << row << "," << i << "] = " << theGrid[row][i] << endl;
                     if (first) {
                         continue;
                     }
