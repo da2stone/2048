@@ -21,7 +21,11 @@ Controller::~Controller() {}
     bool isWon = false;
     bool addNumber = true;
     Game *g = new Game();
-    while(!isWon) {  
+    while(!isWon) { 
+        if (g->getIsWon) {
+            isWon = true;
+            break;
+        } 
         if (addNumber) {
             g->setPiece();
         }
@@ -57,5 +61,7 @@ Controller::~Controller() {}
             continue;
         }
     }
+
+    cout << "**** Congrats on winning the game :) *****" << endl;
  }
 

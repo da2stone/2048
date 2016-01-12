@@ -25,6 +25,7 @@ class Game {
         int **theGrid;
     private:
         bool noMerge;
+        bool isWon;
 };
 
 #endif

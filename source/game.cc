@@ -26,6 +26,7 @@ Game::Game() {
     board = new GraphicDisplay(this);
     board2 = new TextDisplay(this);
     noMerge = false;
+    isWon = false;
 }
 
 Game::~Game() {
@@ -78,6 +79,10 @@ void Game::setPiece() {
     count = 0;
 }
 
+void Game::getIsWon() {
+    return isWon;
+}
+
 // Move operators
 
  void Game::moveLeft() {
@@ -97,6 +102,9 @@ void Game::setPiece() {
                 if (theGrid[row][i] == theGrid[row][i + 1]) {
                     count++;
                     theGrid[row][i] *=2;
+                    if (theGrid[row][i] >= 2048) {
+                        isWon = true;
+                    }
                     theGrid[row][i+1] = 0;
                     cout << "[" << row << "," << i << "] = " << theGrid[row][i] << endl;
                     if (first) {
@@ -129,6 +137,9 @@ void Game::setPiece() {
             if (swapCount > 0) {
                 if (theGrid[row][swapCount - 1] == theGrid[row][swapCount] && !noMerge) {
                     theGrid[row][swapCount - 1] *= 2;
+                    if (theGrid[row][swapCount - 1] >= 2048) {
+                        isWon = true;
+                    }
                     theGrid[row][swapCount] = 0;
                     index = swapCount + 1;
                     continue;
@@ -158,6 +169,9 @@ void Game::setPiece() {
                 if (theGrid[row][i] == theGrid[row][i - 1]) {
                     count++;
                     theGrid[row][i] *=2;
+                    if (theGrid[row][i] >= 2048) {
+                        isWon = true;
+                    }
                     theGrid[row][i-1] = 0;
                     if (first) {
                         continue;
@@ -189,6 +203,9 @@ void Game::setPiece() {
             if (swapCount < 3) {
                 if (theGrid[row][swapCount + 1] == theGrid[row][swapCount] && !noMerge) {
                     theGrid[row][swapCount + 1] *= 2;
+                    if (theGrid[row][swapCount + 1] >= 2048) {
+                        isWon = true;
+                    }
                     theGrid[row][swapCount] = 0;
                     index = swapCount - 1;
                     continue;
@@ -218,6 +235,9 @@ void Game::setPiece() {
                 if (theGrid[i][col] == theGrid[i + 1][col]) {
                     count++;
                     theGrid[i][col] *=2;
+                    if (theGrid[i][col] >= 2048) {
+                        isWon = true;
+                    }
                     theGrid[i + 1][col] = 0;
                     if (first) {
                         continue;
@@ -249,6 +269,9 @@ void Game::setPiece() {
             if (swapCount > 0) {
                 if (theGrid[swapCount - 1][col] == theGrid[swapCount][col] && !noMerge) {
                     theGrid[swapCount - 1][col] *= 2;
+                    if (theGrid[swapCount - 1][col] >= 2048) {
+                        isWon = true;
+                    }
                     theGrid[swapCount][col] = 0;
                     index = swapCount + 1;
                     continue;
@@ -278,6 +301,9 @@ void Game::setPiece() {
                 if (theGrid[i][col] == theGrid[i - 1][col]) {
                     count++;
                     theGrid[i][col] *=2;
+                    if (theGrid[i][col] >= 2048) {
+                        isWon = true;
+                    }
                     theGrid[i - 1][col] = 0;
                     if (first) {
                         continue;
@@ -309,6 +335,9 @@ void Game::setPiece() {
             if (swapCount < 3) {
                 if (theGrid[swapCount + 1][col] == theGrid[swapCount][col] && !noMerge) {
                     theGrid[swapCount + 1][col] *= 2;
+                    if (theGrid[swapCount + 1][col] >= 2048) {
+                        isWon = true;
+                    }
                     theGrid[swapCount][col] = 0;
                     index = swapCount - 1;
                     continue;
