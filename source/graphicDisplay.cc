@@ -5,6 +5,7 @@
 
  #include "graphicDisplay.h"
  #include "game.h"
+ #include <sstream>
 using namespace std;
 
 /*************************
@@ -78,7 +79,12 @@ break;
 xw->drawString(row*50+50, col*50+75, "2048", 1);
 break;
  				default:
+					ostringstream iss;
+					iss << temp;
+					string numStr;
+					numStr = iss.str();
  					xw->fillRectangle(row*50+50, col*50+50, 50, 50, 3);
+xw->drawString(row*50+50, col*50+75, numStr, 1);
  					break;
  			}
  		}
