@@ -27,6 +27,7 @@ Game::Game() {
     board2 = new TextDisplay(this);
     noMerge = false;
     isWon = false;
+    isValidMove = false;
 }
 
 Game::~Game() {
@@ -83,9 +84,14 @@ bool Game::getIsWon() {
     return isWon;
 }
 
+bool Game::goodMove() {
+    return isValidMove;
+}
+
 // Move operators
 
  void Game::moveLeft() {
+    isValidMove = false;
     for (int row = 0; row < 4; row++) {
         int swapCount = 0;
         while (theGrid[row][swapCount] != 0) {
@@ -102,6 +108,7 @@ bool Game::getIsWon() {
                 if (theGrid[row][i] == theGrid[row][i + 1]) {
                     count++;
                     theGrid[row][i] *=2;
+		    isValidMove = true;
                     if (theGrid[row][i] >= 2048) {
                         isWon = true;
                     }
@@ -130,10 +137,11 @@ bool Game::getIsWon() {
                 index++;
                 continue;
             }
+	    isValidMove = true;
             int temp = theGrid[row][swapCount];
             theGrid[row][swapCount] = theGrid[row][index];
             theGrid[row][index] = temp;
-            if (swapCount > 0) {
+            if (swapCount > 0) { 
                 if (theGrid[row][swapCount - 1] == theGrid[row][swapCount] && !noMerge) {
                     theGrid[row][swapCount - 1] *= 2;
                     if (theGrid[row][swapCount - 1] >= 2048) {
@@ -152,6 +160,7 @@ bool Game::getIsWon() {
  }
 
  void Game::moveRight() {
+    isValidMove = false;
     for (int row = 0; row < 4; row++) {
         int swapCount = 3;
         while (theGrid[row][swapCount] != 0) {
@@ -168,6 +177,7 @@ bool Game::getIsWon() {
                 if (theGrid[row][i] == theGrid[row][i - 1]) {
                     count++;
                     theGrid[row][i] *=2;
+                    isValidMove = true;
                     if (theGrid[row][i] >= 2048) {
                         isWon = true;
                     }
@@ -199,6 +209,7 @@ bool Game::getIsWon() {
             int temp = theGrid[row][swapCount];
             theGrid[row][swapCount] = theGrid[row][index];
             theGrid[row][index] = temp;
+            isValidMove = true;
             if (swapCount < 3) {
                 if (theGrid[row][swapCount + 1] == theGrid[row][swapCount] && !noMerge) {
                     theGrid[row][swapCount + 1] *= 2;
@@ -218,6 +229,7 @@ bool Game::getIsWon() {
 }
 
  void Game::moveUp() {
+    isValidMove = false;
     for (int col = 0; col < 4; col++) {
         int swapCount = 0;
         while (theGrid[swapCount][col] != 0) {
@@ -234,6 +246,7 @@ bool Game::getIsWon() {
                 if (theGrid[i][col] == theGrid[i + 1][col]) {
                     count++;
                     theGrid[i][col] *=2;
+                    isValidMove = true;
                     if (theGrid[i][col] >= 2048) {
                         isWon = true;
                     }
@@ -262,6 +275,7 @@ bool Game::getIsWon() {
                 index++;
                 continue;
             }
+            isValidMove = true;
             int temp = theGrid[swapCount][col];
             theGrid[swapCount][col] = theGrid[index][col];
             theGrid[index][col] = temp;
@@ -284,6 +298,7 @@ bool Game::getIsWon() {
  }
 
  void Game::moveDown() {
+    isValidMove = false;
     for (int col = 0; col < 4; col++) {
         int swapCount = 3;
         while (theGrid[swapCount][col] != 0) {
@@ -300,6 +315,7 @@ bool Game::getIsWon() {
                 if (theGrid[i][col] == theGrid[i - 1][col]) {
                     count++;
                     theGrid[i][col] *=2;
+                    isValidMove = true;
                     if (theGrid[i][col] >= 2048) {
                         isWon = true;
                     }
@@ -331,6 +347,7 @@ bool Game::getIsWon() {
             int temp = theGrid[swapCount][col];
             theGrid[swapCount][col] = theGrid[index][col];
             theGrid[index][col] = temp;
+            isValidMove = true;
             if (swapCount < 3) {
                 if (theGrid[swapCount + 1][col] == theGrid[swapCount][col] && !noMerge) {
                     theGrid[swapCount + 1][col] *= 2;

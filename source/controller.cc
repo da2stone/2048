@@ -36,19 +36,19 @@ Controller::~Controller() {}
         cin >> opt;
         if (opt == "Left") {
             g->moveLeft();
-            addNumber = true;
+            addNumber = g->goodMove();
         }
         else if (opt == "Right") {
             g->moveRight();
-            addNumber = true;
+            addNumber = g->goodMove();
         }
         else if (opt == "Up") {
             g->moveUp();
-            addNumber = true;
+            addNumber = g->goodMove();
         }
         else if (opt == "Down") {
             g->moveDown();
-            addNumber = true;
+            addNumber = g->goodMove();
         }
         else if (opt == "Set") {
             int r, c, s;

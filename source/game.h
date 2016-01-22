@@ -23,8 +23,10 @@ class Game {
         void setPiece();
         void manPiece(int r, int c, int state);
         bool getIsWon();
+        bool goodMove();
         int **theGrid;
     private:
+	bool isValidMove;
         bool noMerge;
         bool isWon;
 };
