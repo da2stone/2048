@@ -1,7 +1,8 @@
-/*****************************
+/****************************************************
  * graphicDisplay.h
+ * Where the magic of the graphical display is made 
  * DANIEL STONE 2016
- *****************************/
+ ****************************************************/
 
 #ifndef GRAPHICDISPLAY_H
 #define GRAPHICDISPLAY_H
@@ -10,12 +11,12 @@
 #include "window.h"
 
 class GraphicDisplay : public BoardDisplay {
-    Xwindow *xw;
-    
     public:
         GraphicDisplay(Game *g);
         ~GraphicDisplay();
         void displayBoard();
+    private:
+    	Xwindow *xw;
 };
 
 

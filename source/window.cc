@@ -1,4 +1,7 @@
-
+/**************************************
+ lX11 Library used in class to 
+ help produce the graphic display
+ *************************************/
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <iostream>

@@ -1,7 +1,9 @@
-/**************************
+/*********************************************************
  * controller.cc
+ * Concrete controller that allows the player to make 
+ * moves and interact with the board, to play the game
  * DANIEL STONE 2016
- **************************/
+ *********************************************************/
  #include "controller.h"
  #include <iostream>
  using namespace std;

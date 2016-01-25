@@ -1,3 +1,8 @@
+/**************************************
+ lX11 Library used in class to 
+ help produce the graphic display
+ *************************************/
+
 #ifndef WINDOW_H
 #define WINDOW_H
 #include <X11/Xlib.h>

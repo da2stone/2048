@@ -1,7 +1,8 @@
-/***********************
+/*******************************************
  * textDisplay.h
+ * Magic of the text display occurs here
  * DANIEL STONE 2016
- ***********************/
+ ********************************************/
 #ifndef TEXTDISPLAY_H
 #define TEXTDISPLAY_H
 

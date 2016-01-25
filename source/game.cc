@@ -23,6 +23,8 @@ Game::Game() {
             theGrid[i][j] = 0;
         }
     }
+
+    //Setting up the graphics 
     board = new GraphicDisplay(this);
     board2 = new TextDisplay(this);
     noMerge = false;
@@ -39,10 +41,12 @@ Game::~Game() {
     delete board2;
 }
 
-/***************
+/******************
  Public Methods
-****************/
+*******************/
 
+// notifyBoard() sends a notification to both the text and graphic 
+//   Display to update the status of the board
  void Game::notifyBoard() {
     board->displayBoard();
     board2->displayBoard();
@@ -53,6 +57,7 @@ void Game::manPiece(int r, int c, int state) {
     theGrid[r][c] = state;
 }
 
+//setPiece() is strictly for testing purposes for testing specific situations
 void Game::setPiece() {
     int row, col, count = 0;
     srand (time(NULL));
@@ -80,10 +85,12 @@ void Game::setPiece() {
     count = 0;
 }
 
+//getIsWon() returns true if the game is won 
 bool Game::getIsWon() {
     return isWon;
 }
 
+//goodMove() makes sure that the move is legal
 bool Game::goodMove() {
     return isValidMove;
 }
